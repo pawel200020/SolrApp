@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SearchEngine.Models
 {
-    internal class Product
+    public class Product
     {
         [Key]
         public int Id { get; set; }

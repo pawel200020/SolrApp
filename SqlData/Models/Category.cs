@@ -2,7 +2,7 @@
 
 namespace SearchEngine.Models
 {
-    internal class Category
+    public class Category
     {
         [Key] 
         public required int Id { get; set; }
