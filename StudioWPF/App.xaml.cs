@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -11,25 +9,29 @@ namespace StudioWPF
     /// </summary>
     public partial class App : Application
     {
-        //[STAThread]
-        //public static void Main(string[] args)
-        //{
-        //    using IHost host = CreateHostBuilder(args).Build();
-        //    App app = new();
-        //    app.InitializeComponent();
-        //    app.MainWindow = host.Services.GetRequiredService<MainWindow>();
-        //    app.MainWindow.Visibility = Visibility.Visible;
-        //    app.Run();
-        //}
+        public static IHost AppHost { get; private set; } = null!;
 
-        //public static IHostBuilder CreateHostBuilder(string[] args) =>
-        //    Host.CreateDefaultBuilder(args).ConfigureAppConfiguration((hostBuilderContext, configurationBuilder) =>
-        //    {
+        public App()
+        {
+            AppHost = Host.CreateDefaultBuilder()
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddSingleton<MainWindow>();
+                }).Build();
+        }
 
-        //    }).ConfigureServices((hostContext, services) =>
-        //    {
-        //        services.AddSingleton<MainWindow>();
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            await AppHost.StartAsync();
+            var startupForm = AppHost.Services.GetRequiredService<MainWindow>();
+            startupForm.Show();
+            base.OnStartup(e);
+        }
 
-        //    });
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            await AppHost.StopAsync();
+            base.OnExit(e);
+        }
     }
 }

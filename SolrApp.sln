@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudioWPF", "StudioWPF\StudioWPF.csproj", "{00F08E5E-B5B9-48B6-9C3A-B414B6066E0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudioWPF", "StudioWPF\StudioWPF.csproj", "{00F08E5E-B5B9-48B6-9C3A-B414B6066E0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine", "SearchEngine\SearchEngine.csproj", "{A758069B-FF7E-440E-A2C1-A10E27403FEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchEngine", "SearchEngine\SearchEngine.csproj", "{A758069B-FF7E-440E-A2C1-A10E27403FEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlData", "SqlData\SqlData.csproj", "{BF2C2C20-6A65-45BD-B8E9-122774CEC041}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A758069B-FF7E-440E-A2C1-A10E27403FEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A758069B-FF7E-440E-A2C1-A10E27403FEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A758069B-FF7E-440E-A2C1-A10E27403FEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF2C2C20-6A65-45BD-B8E9-122774CEC041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF2C2C20-6A65-45BD-B8E9-122774CEC041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF2C2C20-6A65-45BD-B8E9-122774CEC041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF2C2C20-6A65-45BD-B8E9-122774CEC041}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
