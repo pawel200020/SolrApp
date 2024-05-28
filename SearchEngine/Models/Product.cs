@@ -13,9 +13,9 @@ namespace SearchEngine.Models
         public int Id { get; set; }
         public required string Name { get; set; }
         public double Price { get; set; }
-        public required string Description { get; set; }
+        public string? Description { get; set; }
         public int Quantity { get; set; }
         public DateTime CreationDate { get; set; }
-        public Category? Category { get; set; }
+        public virtual Category? Category { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace SearchEngine.Context
             DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Server=PC2;Database=ProductSearcher;User Id=sa;Password=Sqldockerp@assword$;");
+                "Server=PC2;Database=ProductSearcher;User Id=sa;Password=Sqldockerp@ssword$;TrustServerCertificate=True;");
             optionsBuilder.UseLazyLoadingProxies();
         }
     }
