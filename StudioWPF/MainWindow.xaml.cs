@@ -32,7 +32,11 @@ namespace StudioWPF
             {
                 ConfigFrame.Navigate(new ConfigurationPage(_context));
             }
-            
+            else if (Equals(TabControl.SelectedItem, SearchTab))
+            {
+                SearchFrame.Navigate(new SolrSearch());
+            }
+
         }
     }
 }
