@@ -1,0 +1,17 @@
+﻿<Page x:Class="StudioWPF.ConfigurationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudioWPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ConfigurationPage">
+
+    <Grid>
+        <Label Content="Solr URL" HorizontalAlignment="Left" Height="24" Margin="35,29,0,0" VerticalAlignment="Top" Width="62"/>
+        <TextBox x:Name="txtSolrUrl" HorizontalAlignment="Left" Margin="91,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="323"/>
+        <Button Content="Save" Margin="663,346,0,0" Click="Button_Click" Height="32" Width="71"/>
+
+    </Grid>
+</Page>

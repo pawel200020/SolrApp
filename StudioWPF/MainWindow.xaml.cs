@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using SearchEngine.Context;
 using SqlData.Context;
+using StudioWPF.DataAccess;
 
 namespace StudioWPF
 {
@@ -16,6 +16,23 @@ namespace StudioWPF
         {
             _context = factory.CreateDbContext(Array.Empty<string>());
             InitializeComponent();
+        }
+
+        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (Equals(TabControl.SelectedItem, CategoryTab))
+            {
+                CategoryFrame.Navigate(new CategoryPage(_context ));
+            }
+            else if (Equals(TabControl.SelectedItem, ProductTab))
+            {
+                ProductFrame.Navigate(new ProductPage());
+            }
+            else if (Equals(TabControl.SelectedItem, ConfigurationTab))
+            {
+                ConfigFrame.Navigate(new ConfigurationPage(_context));
+            }
+            
         }
     }
 }

@@ -7,6 +7,28 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <TabControl SelectionChanged="TabControl_SelectionChanged" x:Name="TabControl">
+            <TabItem Header="Products" x:Name="ProductTab">
+                <Grid Background="#FFE5E5E5">
+                    <Frame NavigationUIVisibility="Hidden" Content="Frame" x:Name="ProductFrame"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Categories" x:Name="CategoryTab">
+                <Grid Background="#FFE5E5E5">
+                    <Frame NavigationUIVisibility="Hidden" x:Name="CategoryFrame" Content="Frame"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Search" x:Name="SearchTab">
+                <Grid Background="#FFE5E5E5">
+                    <Frame NavigationUIVisibility="Hidden" x:Name="SearchFrame" Content="Frame"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Configuration" x:Name="ConfigurationTab">
+                <Grid Background="#FFE5E5E5">
+                    <Frame NavigationUIVisibility="Hidden" x:Name="ConfigFrame" Content="Frame"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>

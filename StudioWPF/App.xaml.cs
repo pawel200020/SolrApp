@@ -21,6 +21,7 @@ namespace StudioWPF
                 {
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<AppContextFactory>();
+                    services.AddDbContext<AppDbContext>();
                 }).Build();
         }
 

@@ -7,14 +7,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SqlData.Context;
 
-
 #nullable disable
 
 namespace SearchEngine.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240528200609_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240529231345_ParamsTable")]
+    partial class ParamsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,13 +28,40 @@ namespace SearchEngine.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SearchEngine.Models.Category", b =>
+            modelBuilder.Entity("SqlData.Models.AppParameter", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppParameters");
+                });
+
+            modelBuilder.Entity("SqlData.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -49,7 +75,7 @@ namespace SearchEngine.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("SearchEngine.Models.Product", b =>
+            modelBuilder.Entity("SqlData.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,6 +85,10 @@ namespace SearchEngine.Migrations
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -83,9 +113,9 @@ namespace SearchEngine.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("SearchEngine.Models.Product", b =>
+            modelBuilder.Entity("SqlData.Models.Product", b =>
                 {
-                    b.HasOne("SearchEngine.Models.Category", "Category")
+                    b.HasOne("SqlData.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId");
 
