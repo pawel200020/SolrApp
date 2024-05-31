@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SolrEngine;
 
 namespace StudioWPF.DataAccess
 {
@@ -20,8 +21,11 @@ namespace StudioWPF.DataAccess
     /// </summary>
     public partial class SolrSearch : Page
     {
-        public SolrSearch()
+        private readonly ISolrManager _manager;
+
+        public SolrSearch(ISolrManager manager)
         {
+            _manager = manager;
             InitializeComponent();
         }
     }

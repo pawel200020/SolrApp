@@ -40,14 +40,15 @@ namespace StudioWPF.DataAccess
                 Name = txtCategoryName.Text,
                 Description = txtCategoryDescription.Text
             });
+            txtCategoryDescription.Text = "";
+            txtCategoryName.Text = "";
             _context.SaveChanges();
-            RefreshDataGrid();
+           RefreshDataGrid();
         }
 
         private void RefreshDataGrid()
         {
             dtCategoryGrid.ItemsSource = _context.Categories.ToList();
-            dtCategoryGrid.IsReadOnly = false;
         }
     }
 }

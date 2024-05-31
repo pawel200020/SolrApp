@@ -16,7 +16,7 @@ namespace SqlData.Context
         {
             optionsBuilder.UseSqlServer(
                 ConfigurationManager.ConnectionStrings["SqlServer"].ConnectionString);
-            optionsBuilder.UseLazyLoadingProxies();
+            //optionsBuilder.UseLazyLoadingProxies();
         }
 
         public AppDbContext()

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SolrEngine;
 using SqlData.Context;
 
 namespace StudioWPF
@@ -22,10 +23,12 @@ namespace StudioWPF
     public partial class ConfigurationPage : Page
     {
         private readonly AppDbContext _context;
+        private readonly ISolrManager _solrManager;
 
-        public ConfigurationPage(AppDbContext context)
+        public ConfigurationPage(AppDbContext context, ISolrManager solrManager)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _solrManager = solrManager ?? throw new ArgumentNullException(nameof(solrManager));
             InitializeComponent();
             SetParamsValue();
         }
@@ -47,6 +50,11 @@ namespace StudioWPF
                 throw new InvalidOperationException("There is no SolrUrl param on database");
             }
            
+        }
+
+        private void IndexSolr_Click(object sender, RoutedEventArgs e)
+        {
+            _solrManager.IndexElements(_context.Products.ToArray());
         }
     }
 }

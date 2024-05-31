@@ -1,8 +1,11 @@
 ﻿using System.IO;
 using System.Windows;
+using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SolrEngine;
+using SolrEngine.Helpers;
 using SqlData.Context;
 
 namespace StudioWPF
@@ -22,6 +25,8 @@ namespace StudioWPF
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<AppContextFactory>();
                     services.AddDbContext<AppDbContext>();
+                    services.AddAutoMapper(typeof(AutoMapperProfiles));
+                    services.AddSingleton<ISolrManager, SolrManager>();
                 }).Build();
         }
 

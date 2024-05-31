@@ -9,7 +9,7 @@
       Title="CategoryPage">
 
     <Grid>
-        <DataGrid x:Name="dtCategoryGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,172,0,10" SelectionMode="Single"/>
+        <DataGrid x:Name="dtCategoryGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,172,0,10" IsReadOnly="True" CanUserAddRows="False"/>
         <TextBox x:Name="txtCategoryName" HorizontalAlignment="Left" Margin="109,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Name" HorizontalAlignment="Left" Height="25" Margin="22,36,0,0" VerticalAlignment="Top" Width="74"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="109,142,0,0" VerticalAlignment="Top" Click="Button_Click" Width="120"/>
