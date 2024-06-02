@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SolrEngine;
+using SolrEngine.Helpers;
 using SqlData.Context;
 
-namespace StudioWPF
+namespace StudioWPF.Configuration
 {
     /// <summary>
     /// Interaction logic for ConfigurationPage.xaml
@@ -36,25 +25,47 @@ namespace StudioWPF
         private void SetParamsValue()
         {
             txtSolrUrl.Text = _context.AppParameters.FirstOrDefault(x => x.Name == "SolrUrl")?.Value;
+            txtSolrUser.Text = _context.AppParameters.FirstOrDefault(x => x.Name == "SolrLogin")?.Value;
+            var cipherText = _context.AppParameters.FirstOrDefault(x => x.Name == "SolrPassword")
+                ?.Value;
+            if (cipherText != null)
+                txtSolrPass.Password =
+                    EncryptionManager.Decrypt(cipherText);
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var param = _context.AppParameters.FirstOrDefault(x => x.Name == "SolrUrl");
-            if (param != null)
+            var result = MessageBox.Show("Changing this parameters require application restart. Do you wish to proceed?", "Warning",MessageBoxButton.YesNo,MessageBoxImage.Warning, MessageBoxResult.Yes);
+            if (result == MessageBoxResult.Yes)
             {
-                param.Value = txtSolrUrl.Text;
-                _context.SaveChanges();
+                try
+                {
+                    var url = _context.AppParameters.First(x => x.Name == "SolrUrl");
+                    var login = _context.AppParameters.First(x => x.Name == "SolrLogin");
+                    var password = _context.AppParameters.First(x => x.Name == "SolrPassword");
+
+                    url.Value = txtSolrUrl.Text;
+                    login.Value = txtSolrUser.Text;
+                    password.Value = EncryptionManager.Encrypt(txtSolrPass.Password);
+                    _context.SaveChanges();
+
+                    System.Windows.Forms.Application.Restart();
+                    System.Windows.Application.Current.Shutdown();
+                }
+                catch(InvalidOperationException ex)
+                {
+                    MessageBox.Show($"There is no suitable param in Database. Please upgrade your database: {ex.Message}", "Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
-            {
-                throw new InvalidOperationException("There is no SolrUrl param on database");
-            }
-           
+            
         }
 
         private void IndexSolr_Click(object sender, RoutedEventArgs e)
         {
-            _solrManager.IndexElements(_context.Products.ToArray());
+            var result = _solrManager.IndexElements(_context.Products.ToArray());
+            if (result)
+                MessageBox.Show("Indexation completed successfully!", "Finish", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
         }
     }
 }

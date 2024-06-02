@@ -11,7 +11,7 @@ namespace SearchEngine.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(@"
-IF NOT EXISTS(Select Id From [AppParameters] where Name = 'SolrUrl')
+IF NOT EXISTS(Select Id From [AppParameters] where Name = 'SolrLogin')
 BEGIN
     Insert into [AppParameters]  (Name, Value) values ('SolrUrl', 'localhost:8983/solr')
 END
@@ -22,9 +22,9 @@ GO");
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(@"
-IF EXISTS(Select Id From [AppParameters] where Name = 'SolrUrl')
+IF EXISTS(Select Id From [AppParameters] where Name = 'SolrLogin')
 BEGIN
-      DELETE FROM [AppParameters]  WHERE Name ='SolrUrl'
+      DELETE FROM [AppParameters]  WHERE Name in('SolrLogin','SolrPassword')
 END
 GO");
         }

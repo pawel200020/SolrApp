@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Windows;
-using AutoMapper;
-using Microsoft.Extensions.Configuration;
+﻿using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SolrEngine;
@@ -20,7 +17,7 @@ namespace StudioWPF
         public App()
         {
             AppHost = Host.CreateDefaultBuilder()
-                .ConfigureServices((hostContext, services) =>
+                .ConfigureServices((_, services) =>
                 {
                     services.AddSingleton<MainWindow>();
                     services.AddSingleton<AppContextFactory>();

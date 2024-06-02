@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using SolrEngine;
 using SqlData.Context;
+using StudioWPF.Configuration;
 using StudioWPF.DataAccess;
+using StudioWPF.Search;
 
 namespace StudioWPF
 {
@@ -31,7 +33,7 @@ namespace StudioWPF
             }
             else if (Equals(TabControl.SelectedItem, ProductTab))
             {
-                ProductFrame.Navigate(new ProductPage(_context));
+                ProductFrame.Navigate(new ProductPage(_context,_solrManager));
             }
             else if (Equals(TabControl.SelectedItem, ConfigurationTab))
             {
