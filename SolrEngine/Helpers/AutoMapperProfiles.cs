@@ -8,6 +8,7 @@ namespace SolrEngine.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<SqlData.Models.Product, Product>().ForMember(x => x.Category, y => y.MapFrom(z => z.Category == null  ? "" : z.Category.Name ));
+            CreateMap<Product, ProductWithHighlight>().ReverseMap();
         }
     }
 }

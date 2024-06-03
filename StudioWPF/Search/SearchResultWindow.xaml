@@ -1,0 +1,25 @@
+﻿<Window x:Class="StudioWPF.Search.SearchResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudioWPF.Search"
+        mc:Ignorable="d"
+        Title="Search Result" Height="450" Width="800"
+        Icon="/Resources/database-storage.png">
+    <Grid>
+        <DataGrid x:Name="gdData" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Path=Quantity}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Category" Binding="{Binding Path=Category}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Highlights" Binding="{Binding Path=Highlight}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Score" Binding="{Binding Path=Score}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudioWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Solr App" Height="500" Width="800"
+        Icon="Resources/database-storage.png">
     <Grid>
-        <TabControl SelectionChanged="TabControl_SelectionChanged" x:Name="TabControl">
+        <TabControl SelectionChanged="TabControl_SelectionChanged" x:Name="TabControl" Margin="0,34,0,0">
             <TabItem Header="Products" x:Name="ProductTab">
                 <Grid Background="#FFE5E5E5">
                     <Frame NavigationUIVisibility="Hidden" Content="Frame" x:Name="ProductFrame"/>
@@ -29,6 +30,29 @@
                 </Grid>
             </TabItem>
         </TabControl>
+
+
+        <ToolBarTray x:Name ="toolBarTray" IsLocked="True" Height="33" VerticalAlignment="Top">
+
+            <!--First Toolbar for the controls from Print to Zoom Control-->
+            <ToolBar x:Name ="topToolBar" FocusVisualStyle="{x:Null}" ToolBarTray.IsLocked="True">
+                <Button Height="29" Width="80" Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="5,4,0,0"><Run Text="Refresh"/></TextBlock>
+                        <Image Source="Resources/refresh2.png" Width="24" Height="24"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <!--<ToolBarPanel>
+            <Grid>
+                <ToolBar Height="33" ToolBarTray.IsLocked="True" HorizontalContentAlignment="Stretch" HorizontalAlignment="Right" Margin="0,0,759,0">
+                    <Button Height="24" Width="24">
+                        <Image Source="Resources/refresh2.png"/>
+                    </Button>
+                </ToolBar>
+            </Grid>
+        </ToolBarPanel>-->
 
     </Grid>
 </Window>

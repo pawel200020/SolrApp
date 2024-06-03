@@ -20,5 +20,7 @@ namespace SolrEngine.Models
         public string CreatedBy { get; set; }
         [SolrField("category")]
         public string? Category { get; set; }
+        [SolrField("score")]
+        public string Score {get; set; }
     }
 }

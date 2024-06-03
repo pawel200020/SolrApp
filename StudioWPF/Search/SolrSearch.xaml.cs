@@ -14,7 +14,7 @@ namespace StudioWPF.Search
 
         public SolrSearch(ISolrManager manager)
         {
-            _manager = manager;
+            _manager = manager ?? throw new ArgumentNullException(nameof(manager));
             InitializeComponent();
         }
 
@@ -38,7 +38,12 @@ namespace StudioWPF.Search
                 return;
             }
 
-            _manager.ContentSearch(txtSeachPhrase.Text,fieldsToSearch,pcrDate.SelectedDate);
+            ProductWithHighlight a = new();
+
+            var searchResult = _manager.ContentSearch(txtSeachPhrase.Text,fieldsToSearch,pcrDateStart.SelectedDate,pcrDateEnd.SelectedDate);
+            
+
+            new SearchResultWindow(searchResult).Show();
 
         }
     }

@@ -1,4 +1,7 @@
-﻿namespace SolrEngine
+﻿using SolrEngine.Models;
+using SolrNet;
+
+namespace SolrEngine
 {
     public interface ISolrManager
     {
@@ -6,6 +9,6 @@
         public bool IndexSingleElement(SqlData.Models.Product product);
         public bool UpdateSingleElementDescription(SqlData.Models.Product product);
         public bool EraseSingleElement(SqlData.Models.Product product);
-        public void ContentSearch(string phrase, IEnumerable<string> fields, DateTime? dateFilter);
+        public IEnumerable<ProductWithHighlight> ContentSearch(string phrase, IEnumerable<string> fields, DateTime? startDateFilter, DateTime? endDateFilter);
     }
 }

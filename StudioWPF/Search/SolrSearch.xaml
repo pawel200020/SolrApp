@@ -18,10 +18,12 @@
         <CheckBox x:Name="cheCategory" Content="Category Name"  Margin="139,154,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="145"/>
         <CheckBox x:Name="cheCreatedBy" Content="Created by"  Margin="139,179,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="145"/>
         <CheckBox x:Name="chePrice" Content="Price"  Margin="139,204,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="145"/>
-        <Label Content="Oldest item Date" Margin="10,231,0,0" HorizontalAlignment="Left" Width="123" Height="28" VerticalAlignment="Top"/>
-        <DatePicker x:Name="pcrDate" HorizontalAlignment="Left" Margin="139,233,0,0" VerticalAlignment="Top"/>
+        <Label Content="Start date:" Margin="10,231,0,0" HorizontalAlignment="Left" Width="123" Height="28" VerticalAlignment="Top"/>
+        <DatePicker x:Name="pcrDateStart" HorizontalAlignment="Left" Margin="139,233,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cheName" Content="Name"  Margin="139,104,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="145"/>
         <CheckBox x:Name="cheDescrpition" Content="Description"  Margin="139,129,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="145"/>
+        <Label Content="End date:" Margin="10,273,0,0" HorizontalAlignment="Left" Width="123" Height="28" VerticalAlignment="Top"/>
+        <DatePicker x:Name="pcrDateEnd" HorizontalAlignment="Left" Margin="139,277,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>
