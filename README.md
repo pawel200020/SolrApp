@@ -1,8 +1,5 @@
 # SolrApp
-
-Preparing SOLR docker container:
-<ul>
-<li> <b>docker</b> volume create solr9
-<li> docker build . -t mysolr
-<li> docker run -d --env-file solr_env.dist -p 8983:8983 --mount source=solr9,target=/var/solr --name my_solr mysolr solr-precreate
-</ul>
+Before you launch app you need:
+1. SQL server database
+2. setup connection params in App.config.template - then rename it to App.config
+3. setup solr according to manual in Docker directory
