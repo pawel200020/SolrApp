@@ -50,8 +50,7 @@ public class SolrManager : ISolrManager
     {
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         _context = context ?? throw new ArgumentNullException(nameof(context));
-        InitIfNeeded();
-        _solr = ServiceLocator.Current.GetInstance<ISolrOperations<Product>>();
+        
 
     }
 
@@ -73,6 +72,8 @@ public class SolrManager : ISolrManager
 
     public bool IndexElements(IEnumerable<SqlData.Models.Product> products)
     {
+        InitIfNeeded();
+        _solr = ServiceLocator.Current.GetInstance<ISolrOperations<Product>>();
         var query = new SolrQuery("*:*");
         _solr.Delete(query);
 
@@ -83,12 +84,16 @@ public class SolrManager : ISolrManager
 
     public bool IndexSingleElement(SqlData.Models.Product product)
     {
+        InitIfNeeded();
+        _solr = ServiceLocator.Current.GetInstance<ISolrOperations<Product>>();
         _solr.Add(_mapper.Map<Product>(product));
         return true;
     }
 
     public bool UpdateSingleElementDescription(SqlData.Models.Product product)
     {
+        InitIfNeeded();
+        _solr = ServiceLocator.Current.GetInstance<ISolrOperations<Product>>();
         _solr.AtomicUpdate(product.Id.ToString(),
             new[]
             {
@@ -108,6 +113,8 @@ public class SolrManager : ISolrManager
 
     private SolrQueryByRange<string>? GetDateFilter(DateTime? startDate, DateTime? endDate)
     {
+        InitIfNeeded();
+        _solr = ServiceLocator.Current.GetInstance<ISolrOperations<Product>>();
         if (!startDate.HasValue && !endDate.HasValue) return null;
         if (startDate.HasValue && endDate.HasValue)
             return new SolrQueryByRange<string>(SolrFields[nameof(Product.CreationDate)],
@@ -120,6 +127,8 @@ public class SolrManager : ISolrManager
     }
     public IEnumerable<ProductWithHighlight> ContentSearch(string phrase, IEnumerable<string> fields, DateTime? startDateFilter, DateTime? endDateFilter)
     {
+        InitIfNeeded();
+        _solr = ServiceLocator.Current.GetInstance<ISolrOperations<Product>>();
         var solrFields = fields.Select(x => SolrFields[x]).ToArray();
         var opt = new QueryOptions();
         opt.Fields = _defaultResultFields;

@@ -13,7 +13,7 @@ namespace SearchEngine.Migrations
             migrationBuilder.Sql(@"
 IF NOT EXISTS(Select Id From [AppParameters] where Name = 'SolrLogin')
 BEGIN
-    Insert into [AppParameters]  (Name, Value) values ('SolrUrl', 'localhost:8983/solr')
+    Insert into [AppParameters]  (Name, Value) values ('SolrUrl', 'http://localhost:8983/solr')
 END
 GO");
         }
